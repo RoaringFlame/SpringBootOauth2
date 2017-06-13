@@ -104,11 +104,11 @@ public class ResourceServerConfig {
                         .requestMatchers().antMatchers("/user/**")
                         .and()
                         .authorizeRequests()
-                        .antMatchers(HttpMethod.GET, "/user/**").access("#oauth2.hasScope('read')")
-                        .antMatchers(HttpMethod.POST, "/user/**").access("#oauth2.hasScope('write')")
-                        .antMatchers(HttpMethod.PATCH, "/user/**").access("#oauth2.hasScope('write')")
-                        .antMatchers(HttpMethod.PUT, "/user/**").access("#oauth2.hasScope('write')")
-                        .antMatchers(HttpMethod.DELETE, "/user/**").access("#oauth2.hasScope('write')")
+                     /*   .antMatchers(HttpMethod.GET, "/user*//**").access("#oauth2.hasScope('read')")
+                        .antMatchers(HttpMethod.POST, "/user*//**").access("#oauth2.hasScope('write')")
+                        .antMatchers(HttpMethod.PATCH, "/user*//**").access("#oauth2.hasScope('write')")
+                        .antMatchers(HttpMethod.PUT, "/user*//**").access("#oauth2.hasScope('write')")
+                        .antMatchers(HttpMethod.DELETE, "/user*//**").access("#oauth2.hasScope('write')")*/
                         .and()
                         .headers().addHeaderWriter(new HeaderWriter() {
                     @Override
