@@ -20,6 +20,6 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserEntity findByname(String username) {
-        return userDao.findByname(username) ;
+        return userDao.findByUsername(username) ;
     }
 }

@@ -109,6 +109,7 @@ public class ResourceServerConfig {
                         .antMatchers(HttpMethod.PATCH, "/user*//**").access("#oauth2.hasScope('write')")
                         .antMatchers(HttpMethod.PUT, "/user*//**").access("#oauth2.hasScope('write')")
                         .antMatchers(HttpMethod.DELETE, "/user*//**").access("#oauth2.hasScope('write')")*/
+                        .antMatchers("/**").access("#oauth2.hasScope('read')")
                         .and()
                         .headers().addHeaderWriter(new HeaderWriter() {
                     @Override

@@ -3,16 +3,14 @@ package com.wang.domain;
 import javax.persistence.*;
 
 /**
- * Created by Administrator on 2017/2/11 0011.
+ * Created by wangxiangyun on 2017/6/8.
  */
 @Entity
-@Table(name = "user", schema = "oauth2", catalog = "")
+@Table(name = "user", schema = "test", catalog = "")
 public class UserEntity {
     private int id;
-    private String name;
+    private String username;
     private String password;
-    private Integer age;
-    private String mark;
 
     @Id
     @Column(name = "id")
@@ -25,40 +23,44 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Basic
-    @Column(name = "age")
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Basic
-    @Column(name = "mark")
-    public String getMark() {
-        return mark;
-    }
-
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
-
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserEntity that = (UserEntity) o;
+
+        if (id != that.id) return false;
+        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        return result;
     }
 }

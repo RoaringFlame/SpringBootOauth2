@@ -24,9 +24,6 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
 
         HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
-        if(request.getRequestURI().equals("/oauth/token")||request.getRequestURI().equals("/oauth/authorize")){
-            return;
-        }
         String url, method;
         AntPathRequestMatcher matcher;
             for (GrantedAuthority ga : authentication.getAuthorities()) {

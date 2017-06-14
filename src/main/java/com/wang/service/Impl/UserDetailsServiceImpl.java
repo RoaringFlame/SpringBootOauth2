@@ -1,9 +1,12 @@
 package com.wang.service.Impl;
 
-import com.wang.domain.Authority;
+import com.wang.config.MyGrantedAuthority;
+import com.wang.dao.PermissionDao;
+import com.wang.dao.UserDao;
+import com.wang.domain.PermissionEntity;
 import com.wang.domain.UserEntity;
-import com.wang.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,18 +19,33 @@ import java.util.List;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
-	private IUserService iUserService;
+	UserDao userDao;
+	@Autowired
+	PermissionDao permissionDao;
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserEntity userEntity= iUserService.findByname(username);
-		String name = userEntity.getName();
-		String password = userEntity.getPassword();
-		List<Authority> authorities = new ArrayList<Authority>();
-		authorities.add(new Authority(1L, "ROLE_ADMIN"));
-		authorities.add(new Authority(2L, "ROLE_USER"));
 
-		return new User(name, password, true, true, true, true, authorities);
+
+	public UserDetails loadUserByUsername(String username) {
+		UserEntity user = userDao.findByUsername(username);
+		if (user != null) {
+			List<PermissionEntity> permissionList = permissionDao.findUserAllPermissions(user.getId());
+			List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+			for (PermissionEntity permission : permissionList) {
+				if (permission != null && permission.getName() != null) {
+					GrantedAuthority grantedAuthority = new MyGrantedAuthority(permission.getUrl(), permission.getMethod());
+					grantedAuthorities.add(grantedAuthority);
+				}
+			}
+			//添加默认权限
+			GrantedAuthority tokenAuthority = new MyGrantedAuthority("/oauth/token","ALL");
+			GrantedAuthority authorizeAuthority = new MyGrantedAuthority("/oauth/authorize","ALL");
+			GrantedAuthority confirmAccessAuthority = new MyGrantedAuthority("/oauth/confirm_access","ALL");
+			grantedAuthorities.add(tokenAuthority);
+			grantedAuthorities.add(authorizeAuthority);
+			grantedAuthorities.add(confirmAccessAuthority);
+			return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
+		} else {
+			throw new UsernameNotFoundException("admin: " + username + " do not exist!");
+		}
 	}
-
 }
