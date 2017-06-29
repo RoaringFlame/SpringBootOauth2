@@ -103,7 +103,7 @@
         </plugins>
         <resources>
             <resource>
-                <directory>src/main/source</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
                     <include>oauth2/*</include>

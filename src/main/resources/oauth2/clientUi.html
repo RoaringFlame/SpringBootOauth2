@@ -2,13 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<script th:src="@{js/docs.js}" type="text/javascript"></script>
 <head>
     <title>bata </title>
 </head>
 <body>
 <form name="f" th:action="@{/client/add}" method="post">
     <fieldset>
-        <legend>请填写clientDetail</legend>
+        <legend>请填写11clientDetail</legend>
 
         <label for="clientId">clientId</label>
         <input type="text" id="clientId" name="clientId"/>
