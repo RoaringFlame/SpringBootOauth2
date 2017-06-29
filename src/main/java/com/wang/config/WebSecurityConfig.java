@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 /**
  * Created by Administrator on 2017/2/12 0012.
@@ -19,6 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
+//                .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
