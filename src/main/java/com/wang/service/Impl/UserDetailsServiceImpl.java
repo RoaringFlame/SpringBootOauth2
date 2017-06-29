@@ -36,13 +36,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 					grantedAuthorities.add(grantedAuthority);
 				}
 			}
-			//添加默认权限
-/*			GrantedAuthority tokenAuthority = new MyGrantedAuthority("/oauth/token","ALL");
-			GrantedAuthority authorizeAuthority = new MyGrantedAuthority("/oauth/authorize","ALL");
-			GrantedAuthority confirmAccessAuthority = new MyGrantedAuthority("/oauth/confirm_access","ALL");
-			grantedAuthorities.add(tokenAuthority);
-			grantedAuthorities.add(authorizeAuthority);
-			grantedAuthorities.add(confirmAccessAuthority);*/
 			return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
 		} else {
 			throw new UsernameNotFoundException("admin: " + username + " do not exist!");
