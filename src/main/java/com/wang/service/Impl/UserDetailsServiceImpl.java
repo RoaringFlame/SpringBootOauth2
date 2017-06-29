@@ -1,6 +1,5 @@
 package com.wang.service.Impl;
 
-import com.wang.config.MyGrantedAuthority;
 import com.wang.dao.PermissionDao;
 import com.wang.dao.UserDao;
 import com.wang.domain.PermissionEntity;
@@ -11,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.oauth2.provider.authentication.PermissionGrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,17 +32,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 			for (PermissionEntity permission : permissionList) {
 				if (permission != null && permission.getName() != null) {
-					GrantedAuthority grantedAuthority = new MyGrantedAuthority(permission.getUrl(), permission.getMethod());
+					GrantedAuthority grantedAuthority = new PermissionGrantedAuthority(permission.getUrl(), permission.getMethod());
 					grantedAuthorities.add(grantedAuthority);
 				}
 			}
 			//添加默认权限
-			GrantedAuthority tokenAuthority = new MyGrantedAuthority("/oauth/token","ALL");
+/*			GrantedAuthority tokenAuthority = new MyGrantedAuthority("/oauth/token","ALL");
 			GrantedAuthority authorizeAuthority = new MyGrantedAuthority("/oauth/authorize","ALL");
 			GrantedAuthority confirmAccessAuthority = new MyGrantedAuthority("/oauth/confirm_access","ALL");
 			grantedAuthorities.add(tokenAuthority);
 			grantedAuthorities.add(authorizeAuthority);
-			grantedAuthorities.add(confirmAccessAuthority);
+			grantedAuthorities.add(confirmAccessAuthority);*/
 			return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
 		} else {
 			throw new UsernameNotFoundException("admin: " + username + " do not exist!");
