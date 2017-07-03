@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.oauth.com/thymeleaf/layout">
+<body>
+<h1> this is  layout !! </h1>
+<th:block layout:include="layout/left"/>
+<th:block layout:include="layout/top"/>
+<th:block layout:fragment="content"/>
+</body>
+</html>
