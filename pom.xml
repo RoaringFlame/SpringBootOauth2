@@ -103,12 +103,19 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>oauth2/**</include>
-                    <include>static/**</include>
                     <include>application*</include>
                     <include>logback.xml</include>
                 </includes>
             </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>static/**</include>
+                </includes>
+            </resource>
         </resources>
+
     </build>
 
 </project>

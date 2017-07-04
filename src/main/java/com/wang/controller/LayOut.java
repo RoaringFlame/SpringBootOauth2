@@ -12,4 +12,9 @@ public class LayOut {
     public String index() {
         return "layout/index";
     }
+
+    @RequestMapping("/left")
+    public String left() {
+        return "layout/left";
+    }
 }

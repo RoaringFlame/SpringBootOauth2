@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.oauth.com/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.oauth.com/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Nifty - Responsive admin template.</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/nifty.min.css" rel="stylesheet">
+    <link href="/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/plugins/animate-css/animate.min.css" rel="stylesheet">
+    <link href="/plugins/morris-js/morris.min.css" rel="stylesheet">
+    <link href="/plugins/switchery/switchery.min.css" rel="stylesheet">
+    <link href="/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/css/demo/nifty-demo.min.css" rel="stylesheet">
+    <!--SCRIPT-->
+    <link href="/plugins/pace/pace.min.css" rel="stylesheet">
+    <link href="/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.5.0" rel="stylesheet">
+    <script src="/plugins/pace/pace.min.js"></script>
+</head>
 <body>
-<h1> this is  layout !! </h1>
-<th:block layout:include="layout/left"/>
-<th:block layout:include="layout/top"/>
-<th:block layout:fragment="content"/>
+<div id="container" class="effect mainnav-lg">
+    <th:block layout:replace="layout/header"/>
+    <th:block layout:replace="layout/boxed"/>
+    <th:block layout:replace="layout/footer"/>
+
+</div>
+
+<!--JAVASCRIPT-->
+<!--=================================================-->
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/plugins/fast-click/fastclick.min.js"></script>
+<script src="/js/nifty.min.js"></script>
+<script src="/plugins/morris-js/morris.min.js"></script>
+<script src="/plugins/morris-js/raphael-js/raphael.min.js"></script>
+<script src="/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="/plugins/skycons/skycons.min.js"></script>
+<script src="/plugins/switchery/switchery.min.js"></script>
+<script src="/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/js/demo/nifty-demo.min.js"></script>
+<script src="/js/demo/dashboard.js"></script>
+/
+
 </body>
 </html>
