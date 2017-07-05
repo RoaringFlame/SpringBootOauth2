@@ -102,7 +102,7 @@
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
-                    <include>oauth2/**</include>
+                    <include>templates/**</include>
                     <include>application*</include>
                     <include>logback.xml</include>
                 </includes>

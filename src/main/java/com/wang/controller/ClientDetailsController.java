@@ -23,7 +23,7 @@ public class ClientDetailsController {
     @GetMapping("/ui")
     @ApiOperation(value = "添加客户端detailUi", notes = "添加客户端detailUi")
     public String addClientUi() {
-        return "clientUi";
+        return "oauth/clientUi";
     }
 
     @PostMapping("/add")

@@ -44,6 +44,6 @@ public class ConfirmAccessController {
         }
         model.put("scopes", scopes);
 
-        return "access_confirmation";
+        return "oauth/access_confirmation";
     }
 }
