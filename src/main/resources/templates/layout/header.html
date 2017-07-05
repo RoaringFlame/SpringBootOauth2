@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <header id="navbar">
     <div id="navbar-container" class="boxed">
 
@@ -349,7 +351,7 @@
                                 <span class="pull-right">
                                     <img class="img-circle img-user media-object" src="/img/av1.png" alt="Profile Picture">
                                 </span>
-                        <div class="username hidden-xs">John Doe</div>
+                        <div class="username hidden-xs" sec:authorize="isAuthenticated()"><span sec:authentication="name"></span></div>
                     </a>
 
 
@@ -399,9 +401,9 @@
 
                         <!-- Dropdown footer -->
                         <div class="pad-all text-right">
-                            <a href="pages-login.html" class="btn btn-primary">
-                                <i class="fa fa-sign-out fa-fw"></i> Logout
-                            </a>
+                            <form th:action="@{/logout}" method="post">
+                                <input type="submit" class="btn btn-primary" value="注销"/>
+                            </form>
                         </div>
                     </div>
                 </li>
@@ -415,3 +417,4 @@
 
     </div>
 </header>
+</html>

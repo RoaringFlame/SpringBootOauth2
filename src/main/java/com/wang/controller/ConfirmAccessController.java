@@ -1,5 +1,6 @@
 package com.wang.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.util.OAuth2Utils;
 import org.springframework.security.oauth2.provider.AuthorizationRequest;
@@ -11,9 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by wxy on 2017/4/4 0004.
@@ -27,11 +28,10 @@ public class ConfirmAccessController {
     private ApprovalStore approvalStore;
 
     @RequestMapping("/oauth/confirm_access")
-    public String getAccessConfirmation(Map<String, Object> model, Principal principal) {
+    public String getAccessConfirmation(Map<String, Object> model, Principal principal , HttpSession session) {
         AuthorizationRequest clientAuth = (AuthorizationRequest) model.remove("authorizationRequest");
         ClientDetails client = clientDetailsService.loadClientByClientId(clientAuth.getClientId());
-        model.put("auth_request", clientAuth);
-        model.put("client", client);
+
         Map<String, String> scopes = new LinkedHashMap<String, String>();
         for (String scope : clientAuth.getScope()) {
             scopes.put(OAuth2Utils.SCOPE_PREFIX + scope, "false");
@@ -42,8 +42,10 @@ public class ConfirmAccessController {
                         approval.getStatus() == Approval.ApprovalStatus.APPROVED ? "true" : "false");
             }
         }
+        System.out.println("session 的值是："+JSONObject.toJSONString(session));
+        model.put("auth_request", clientAuth);
+        model.put("client", client);
         model.put("scopes", scopes);
-
         return "oauth/access_confirmation";
     }
 }

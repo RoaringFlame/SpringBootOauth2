@@ -1,53 +1,109 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.oauth.com/thymeleaf/layout" layout:decorator="layout/layout">
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.oauth.com/thymeleaf/layout"
+      layout:decorator="layout/layout">
 <head>
 </head>
 <body>
 <th:block layout:fragment="content">
-    <form name="f" th:action="@{/client/add}" method="post">
-        <fieldset>
-            <legend>请填写11clientDetail</legend>
 
-            <label for="clientId">clientId</label>
-            <input type="text" id="clientId" name="clientId"/>
 
-            <label for="resourceIds">resourceIds</label>
-            <input type="text" id="resourceIds" name="resourceIds"/>
+    <div id="page-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">添加client</h3>
+                    </div>
 
-            <label for="clientSecret">clientSecret</label>
-            <input type="text" id="clientSecret" name="clientSecret"/>
+                    <!--Block Styled Form -->
+                    <!--===================================================-->
+                    <form name="f" th:action="@{/client/add}" method="post">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">clientId：(客户端的唯一标识符可以用户自定义一般企业缩写)</label>
+                                        <input type="text" class="form-control" name="clientId">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">resourceIds：(客户端可以访问的资源集合)</label>
+                                        <input type="text" class="form-control" name="resourceIds">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">clientSecret：(客户端密钥,用户或者公司提供也可以系统生成)</label>
+                                        <input type="text" class="form-control" name="clientSecret">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">scope：(目前定义有3种 {read write trust})</label>
+                                        <input type="url" class="form-control" name="scope">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">authorizedGrantTypes：(授权类型)</label>
+                                        <input type="text" class="form-control" name="authorizedGrantTypes">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">webServerRedirectUri：(重定向地址一般是访问的主域名)</label>
+                                        <input type="text" class="form-control" name="webServerRedirectUri">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">authorities：(权限集合)</label>
+                                        <input type="email" class="form-control" name="authorities">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">accessTokenValidity：(accessToken 有效时间 毫秒值)</label>
+                                        <input type="url" class="form-control" name="accessTokenValidity">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">refreshTokenValidity：(refreshToken 有效时间 毫秒值)</label>
+                                        <input type="text" class="form-control" name="refreshTokenValidity">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">additional_information：(附加信息)</label>
+                                        <input type="text" class="form-control" name="additional_information">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label">autoapprove：(是否自动审批通过 true 是 false 否)</label>
+                                        <input type="text" class="form-control" name="autoapprove">
+                                    </div>
+                                </div>
 
-            <label for="scope">scope</label>
-            <input type="text" id="scope" name="scope"/>
-
-            <label for="authorizedGrantTypes">authorizedGrantTypes</label>
-            <input type="text" id="authorizedGrantTypes" name="authorizedGrantTypes"/>
-
-            <label for="webServerRedirectUri">webServerRedirectUri</label>
-            <input type="text" id="webServerRedirectUri" name="webServerRedirectUri"/>
-
-            <label for="authorities">authorities</label>
-            <input type="text" id="authorities" name="authorities"/>
-
-            <label for="accessTokenValidity">accessTokenValidity</label>
-            <input type="text" id="accessTokenValidity" name="accessTokenValidity"/>
-
-            <label for="refreshTokenValidity">refreshTokenValidity</label>
-            <input type="text" id="refreshTokenValidity" name="refreshTokenValidity"/>
-
-            <label for="additionalInformation">additional_information</label>
-            <input type="text" id="additionalInformation" name="additionalInformation"/>
-
-            <label for="autoapprove">autoapprove</label>
-            <input type="text" id="autoapprove" name="autoapprove"/>
-
-            <div class="form-actions">
-                <button type="submit" class="btn">提交</button>
+                            </div>
+                        </div>
+                        <div class="panel-footer text-right">
+                            <button class="btn btn-info" type="submit">提交</button>
+                        </div>
+                    </form>
+                    <!--===================================================-->
+                    <!--End Block Styled Form -->
+                </div>
             </div>
-        </fieldset>
-    </form>
+        </div>
+    </div>
 </th:block>
 
 </body>
-</html>
