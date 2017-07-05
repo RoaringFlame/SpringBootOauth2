@@ -42,7 +42,6 @@ public class ConfirmAccessController {
                         approval.getStatus() == Approval.ApprovalStatus.APPROVED ? "true" : "false");
             }
         }
-        System.out.println("session 的值是："+JSONObject.toJSONString(session));
         model.put("auth_request", clientAuth);
         model.put("client", client);
         model.put("scopes", scopes);
