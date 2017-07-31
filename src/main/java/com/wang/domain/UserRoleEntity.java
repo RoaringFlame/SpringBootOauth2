@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by wangxiangyun on 2017/6/8.
  */
 @Entity
-@Table(name = "user_role", schema = "test", catalog = "")
+@Table(name = "user_role")
 public class UserRoleEntity {
     private int id;
     private Integer userId;

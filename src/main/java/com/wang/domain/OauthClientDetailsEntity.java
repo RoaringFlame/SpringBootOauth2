@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by wangxiangyun on 2017/2/14.
  */
 @Entity
-@Table(name = "oauth_client_details", schema = "templates", catalog = "")
+@Table(name = "oauth_client_details")
 public class OauthClientDetailsEntity {
     private String clientId;
     private String resourceIds;
