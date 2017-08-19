@@ -1,4 +1,4 @@
-package com.wang.service.Impl;
+package com.wang.service.security;
 
 import com.wang.dao.PermissionDao;
 import com.wang.dao.UserDao;
@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.oauth2.provider.authentication.PermissionGrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,12 +29,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		if (user != null) {
 			List<PermissionEntity> permissionList = permissionDao.findUserAllPermissions(user.getId());
 			List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-			for (PermissionEntity permission : permissionList) {
-				if (permission != null && permission.getName() != null) {
-					GrantedAuthority grantedAuthority = new PermissionGrantedAuthority(permission.getUrl(), permission.getMethod());
-					grantedAuthorities.add(grantedAuthority);
-				}
-			}
+			permissionList.stream().filter(permission -> permission != null && permission.getName() != null).forEach(permission -> {
+				GrantedAuthority grantedAuthority = new PermissionGrantedAuthority(permission.getUrl(), permission.getMethod());
+				grantedAuthorities.add(grantedAuthority);
+			});
 			return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
 		} else {
 			throw new UsernameNotFoundException("admin: " + username + " do not exist!");
