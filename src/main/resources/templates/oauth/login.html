@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>spring-oauth2.0-login</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/nifty.min.css" rel="stylesheet">
-    <link href="/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/demo/nifty-demo.min.css" rel="stylesheet">
-    <link href="/plugins/pace/pace.min.css" rel="stylesheet">
-    <script src="/plugins/pace/pace.min.js" type="text/javascript" ></script>
+    <link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../../static/css/nifty.min.css" th:href="@{/css/nifty.min.css}" rel="stylesheet"/>
+    <link href="../../static/plugins/font-awesome/css/font-awesome.min.css" th:href="@{/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link href="../../static/css/demo/nifty-demo.min.css" th:href="@{/css/demo/nifty-demo.min.css}" rel="stylesheet"/>
+    <link href="../../static/plugins/pace/pace.min.css" th:href="@{/plugins/pace/pace.min.css}" rel="stylesheet"/>
+
+    <script src="../../static/plugins/pace/pace.min.js" th:src="@{/plugins/pace/pace.min.js}" type="text/javascript"></script>
 </head>
 <body>
 <div id="container" class="cls-container">
@@ -23,9 +24,11 @@
     <!--===================================================-->
     <div class="cls-header cls-header-lg">
         <div class="cls-brand">
-            <a class="box-inline" href="index.html">
+            <a class="box-inline" href="../layout/index.html">
                 <!-- <img alt="Nifty Admin" src="img/logo.png" class="brand-icon"> -->
-                <span class="brand-title">Oauth2.0 <span class="text-thin">管理后台</span></span>
+                <span class="brand-title">Oauth2.0
+                    <span class="text-thin">管理后台</span>
+                </span>
             </a>
         </div>
     </div>
@@ -42,19 +45,19 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                            <input type="text" class="form-control" placeholder="Username" name="username">
+                            <input type="text" class="form-control" placeholder="Username" name="username"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                            <input type="password" class="form-control" placeholder="Password" name="password">
+                            <input type="password" class="form-control" placeholder="Password" name="password"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-8 text-left checkbox">
                             <label class="form-checkbox form-icon">
-                                <input type="checkbox"> 记住我
+                                <input type="checkbox"/> 记住我
                             </label>
                         </div>
                         <div class="col-xs-4">
@@ -83,14 +86,20 @@
     <div class="demo-bg">
         <div id="demo-bg-list">
             <div class="demo-loading"><i class="fa fa-refresh"></i></div>
-            <img class="demo-chg-bg bg-trans" src="/img/bg-img/thumbs/bg-trns.jpg" alt="Background Image">
-            <img class="demo-chg-bg" src="/img/bg-img/thumbs/bg-img-1.jpg" alt="Background Image">
-            <img class="demo-chg-bg active" src="/img/bg-img/thumbs/bg-img-2.jpg" alt="Background Image">
-            <img class="demo-chg-bg" src="/img/bg-img/thumbs/bg-img-3.jpg" alt="Background Image">
-            <img class="demo-chg-bg" src="/img/bg-img/thumbs/bg-img-4.jpg" alt="Background Image">
-            <img class="demo-chg-bg" src="/img/bg-img/thumbs/bg-img-5.jpg" alt="Background Image">
-            <img class="demo-chg-bg" src="/img/bg-img/thumbs/bg-img-6.jpg" alt="Background Image">
-            <img class="demo-chg-bg" src="/img/bg-img/thumbs/bg-img-7.jpg" alt="Background Image">
+            <img class="demo-chg-bg" src="../../static/img/bg-img/thumbs/bg-img-1.jpg"
+                 th:src="@{/img/bg-img/thumbs/bg-img-1.jpg}" alt="Background Image"/>
+            <img class="demo-chg-bg active" src="../../static/img/bg-img/thumbs/bg-img-2.jpg"
+                 th:src="@{/img/bg-img/thumbs/bg-img-2.jpg}" alt="Background Image"/>
+            <img class="demo-chg-bg" src="../../static/img/bg-img/thumbs/bg-img-3.jpg"
+                 th:src="@{/img/bg-img/thumbs/bg-img-3.jpg}" alt="Background Image"/>
+            <img class="demo-chg-bg" src="../../static/img/bg-img/thumbs/bg-img-4.jpg"
+                 th:src="@{/img/bg-img/thumbs/bg-img-4.jpg}" alt="Background Image"/>
+            <img class="demo-chg-bg" src="../../static/img/bg-img/thumbs/bg-img-5.jpg"
+                 th:src="@{/img/bg-img/thumbs/bg-img-5.jpg}" alt="Background Image"/>
+            <img class="demo-chg-bg" src="../../static/img/bg-img/thumbs/bg-img-6.jpg"
+                 th:src="@{/img/bg-img/thumbs/bg-img-6.jpg}" alt="Background Image"/>
+            <img class="demo-chg-bg" src="../../static/img/bg-img/thumbs/bg-img-7.jpg"
+                 th:src="@{/img/bg-img/thumbs/bg-img-7.jpg}" alt="Background Image"/>
         </div>
     </div>
     <!--===================================================-->
@@ -98,10 +107,10 @@
 
 
 </div>
-<script src="/js/jquery-2.1.1.min.js" type="text/javascript"></script>
-<script src="/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/plugins/fast-click/fastclick.min.js" type="text/javascript"></script>
-<script src="/js/nifty.min.js" type="text/javascript"></script>
-<script src="/js/demo/bg-images.js" type="text/javascript"></script>
+<script src="../../static/js/jquery-2.1.1.min.js" th:src="@{/js/jquery-2.1.1.min.js}" type="text/javascript"></script>
+<script src="../../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script src="../../static/plugins/fast-click/fastclick.min.js" th:src="@{/plugins/fast-click/fastclick.min.js}" type="text/javascript"></script>
+<script src="../../static/js/nifty.min.js" th:src="@{/js/nifty.min.js}" type="text/javascript"></script>
+<script src="../../static/js/demo/bg-images.js" th:src="@{/js/demo/bg-images.js}" type="text/javascript"></script>
 </body>
 </html>

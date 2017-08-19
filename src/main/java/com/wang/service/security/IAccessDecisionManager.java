@@ -24,10 +24,10 @@ public class IAccessDecisionManager implements AccessDecisionManager {
         HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
         String url, method;
         if ("anonymousUser".equals(authentication.getPrincipal())
-                || matchers("/images/**", request)
+                || matchers("/img/**", request)
                 || matchers("/js/**", request)
                 || matchers("/css/**", request)
-                || matchers("/fonts/**", request)
+                || matchers("/plugins/**", request)
                 || matchers("/", request)
                 || matchers("/index.html", request)
                 || matchers("/favicon.ico", request)
