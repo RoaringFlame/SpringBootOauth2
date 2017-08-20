@@ -18,7 +18,7 @@ import java.util.Collection;
  * Created by yangyibo on 17/1/19.
  */
 @Service
-public class IAccessDecisionManager implements AccessDecisionManager {
+public class UrlAccessDecisionManager implements AccessDecisionManager {
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
         HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();

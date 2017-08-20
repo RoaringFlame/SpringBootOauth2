@@ -1,7 +1,6 @@
 package com.wang.service.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.AbstractSecurityInterceptor;
 import org.springframework.security.access.intercept.InterceptorStatusToken;
@@ -13,14 +12,14 @@ import javax.servlet.*;
 import java.io.IOException;
 
 @Service
-public class IFilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
+public class UrlFilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
 
 
     @Autowired
     private FilterInvocationSecurityMetadataSource securityMetadataSource;
 
     @Autowired
-    public void setUrlAccessDecisionManager(IAccessDecisionManager accessDecisionManager) {
+    public void setUrlAccessDecisionManager(UrlAccessDecisionManager accessDecisionManager) {
         super.setAccessDecisionManager(accessDecisionManager);
     }
 

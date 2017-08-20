@@ -10,13 +10,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class IMetadataSourceService implements FilterInvocationSecurityMetadataSource {
+public class UrlMetadataSourceService implements FilterInvocationSecurityMetadataSource {
 
     @Override
     public Collection<org.springframework.security.access.ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         final HttpServletRequest request = ((FilterInvocation) object).getRequest();
         Set<org.springframework.security.access.ConfigAttribute> allAttributes = new HashSet<>();
-        org.springframework.security.access.ConfigAttribute configAttribute = new IConfigAttribute(request);
+        org.springframework.security.access.ConfigAttribute configAttribute = new UrlConfigAttribute(request);
         allAttributes.add(configAttribute);
         return allAttributes;
     }

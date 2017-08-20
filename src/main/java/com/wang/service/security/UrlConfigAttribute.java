@@ -4,11 +4,11 @@ import org.springframework.security.access.ConfigAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class IConfigAttribute implements ConfigAttribute {
+public class UrlConfigAttribute implements ConfigAttribute {
 
     private final HttpServletRequest httpServletRequest;
 
-    public IConfigAttribute(HttpServletRequest httpServletRequest) {
+    public UrlConfigAttribute(HttpServletRequest httpServletRequest) {
         this.httpServletRequest = httpServletRequest;
     }
 
